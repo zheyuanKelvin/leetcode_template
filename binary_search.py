@@ -1,11 +1,18 @@
 #binary search：
-def binary_searche(l, r):
-    while l < r:
-        m = l + (r - l) // 2
-        if f(m):    #optional
-            return m
-        if g(m):
-            r = m   # new range [l, m)
+'''
+Points:
+update start as mid + 1
+return start at the end
+f(mid): three sum questions, 'sum == target'
+g(mid): usually 'nums[mid] > target'
+'''
+def binary_search(start, end):
+    while start < end:
+        mid = start + (end - start) // 2
+        if f(mid):    #optional
+            return mid
+        if g(mid):
+            end = mid   # new range, [start, mid)
         else:
-            l = m + 1 # new range [m+1, r)
-    return l    # or not found
+            start = mid + 1 # new range [mid+1, end)
+    return start    # or not found
