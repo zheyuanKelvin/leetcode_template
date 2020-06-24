@@ -1,6 +1,5 @@
 ##go through tree
 
-## DFS
 #Recursive Approach
 '''
 change the order of left, right, append when you need different traversal order
@@ -104,3 +103,28 @@ def recursive_levelOrder(self, root: TreeNode) -> List[List[int]]:
 
     helper(root,0)
     return result
+
+##DFS
+#recursive
+def recursive_DFS(self, root: TreeNode):
+    if not root: return False
+    #opeartions
+    if (root.left or root.right) == None: #reach leaves
+        #return something or do nothing
+    #go to left subtree or right subtree
+    return self.recursive_DFS(root.left) or self.recursive_DFS(root.right)
+
+#stack
+def stack_DFS(self, root: TreeNode):
+    if not root:
+        return False
+    de = [root, ] #(root, #something needed) instead of root
+    while de:
+        node = de.pop()
+        if not node.left and not node.right:  #reach leaves
+            # retrue something
+        if node.right:
+            de.append(node.right) #append right subtree
+        if node.left:
+            de.append(node.left) #append left subtree
+    
